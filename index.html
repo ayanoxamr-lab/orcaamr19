@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMRChain - The $100 Trillion Rare Asset Backed Blockchain</title>
+    <title>orcaamr</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700;900&display=swap"
@@ -16,13 +16,13 @@
             --secondary: #7b42f5;
             /* Purple Nebula */
             --accent: #8f5bff;
-            /* Purple Glow - جديد بدل الوردي */
+            /* Purple Glow */
 
             --dark: #0a0a1a;
             --darker: #050510;
 
             --light: #d6d6ff;
-            /* أخف وأرق من القديم */
+            /* Light text color */
 
             --card-bg: rgba(16, 16, 40, 0.8);
             --card-border: rgba(123, 66, 245, 0.35);
@@ -1610,10 +1610,14 @@
             .tabs-header {
                 overflow-x: auto;
                 white-space: nowrap;
+                padding: 10px 5px;
+                -webkit-overflow-scrolling: touch;
             }
 
             .tab {
                 display: inline-block;
+                padding: 12px 18px;
+                font-size: 0.9rem;
             }
 
             .tab-content {
@@ -1622,6 +1626,7 @@
 
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .partners-grid {
@@ -1644,23 +1649,61 @@
                 padding: 10px;
                 background: rgba(5, 5, 16, 0.95);
             }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            /* Footer improvements */
+            .footer-column h3 {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
+
+            .email-link {
+                padding: 10px 14px;
+            }
+
+            .email-link span {
+                font-size: 0.85rem;
+            }
         }
 
         @media (max-width: 576px) {
             .container {
-                padding: 0 15px;
+                padding: 0 12px;
             }
 
             .hero {
-                padding: 150px 0 80px;
+                padding: 130px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                line-height: 1.3;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
 
             .section-title h2 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+            }
+
+            .section-title p {
+                font-size: 0.95rem;
             }
 
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .feature-card {
+                padding: 20px;
             }
 
             .download-options {
@@ -1668,11 +1711,81 @@
             }
 
             .contact-form {
-                padding: 25px;
+                padding: 20px;
             }
 
             .specs-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .tab {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+            }
+
+            .tab-content {
+                padding: 25px 15px;
+            }
+
+            .tab-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .tab-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .tab-content p {
+                font-size: 0.95rem;
+            }
+
+            /* Footer mobile */
+            .footer-column {
+                text-align: center;
+            }
+
+            .contact-emails {
+                align-items: center;
+            }
+
+            .email-link {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .tab {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+
+            .social-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .feature-card p {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -2309,7 +2422,6 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                         backdrop-filter: blur(12px);
                     }
 
-                    /* خلفية المجرة */
                     #omniverse-bg {
                         position: absolute;
                         top: 0;
@@ -2321,7 +2433,6 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                         background: radial-gradient(ellipse at center, rgba(0, 10, 30, 1) 0%, rgba(0, 0, 10, 1) 80%);
                     }
 
-                    /* تأثيرات النجوم */
                     @keyframes star-twinkle {
 
                         0%,
@@ -2344,7 +2455,6 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                         animation: star-twinkle 3s infinite ease-in-out;
                     }
 
-                    /* تأثير الكواكب */
                     .planet {
                         position: absolute;
                         border-radius: 50%;
@@ -2369,7 +2479,6 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                         }
                     }
 
-                    /* نصوص النيون */
                     #omniverse-content h2 {
                         font-family: 'Orbitron', sans-serif;
                         color: #00f0ff;
@@ -2406,10 +2515,8 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                 </style>
 
                 <script>
-                    // إنشاء نجوم وكواكب متحركة في الخلفية
                     const omniBg = document.getElementById('omniverse-bg');
 
-                    // توليد النجوم
                     for (let i = 0; i < 100; i++) {
                         const star = document.createElement('div');
                         star.classList.add('star');
@@ -2422,7 +2529,6 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                         omniBg.appendChild(star);
                     }
 
-                    // توليد كواكب تدور ببطء
                     for (let i = 0; i < 3; i++) {
                         const planet = document.createElement('div');
                         planet.classList.add('planet');
@@ -4185,6 +4291,9 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                                 <ul class="leader-skills">
                                     <li>Strategic Planning — defines the long-term roadmap and organizational direction.
                                     </li>
+                                    <li>Blockchain network engineer
+                                    </li>
+
                                     <li>Executive Leadership — supervises teams, operations, and internal decision
                                         structures.</li>
                                     <li>Economic Architecture — develops the monetary model and value framework of
