@@ -209,9 +209,9 @@
         }
 
         .goog-te-menu-value span {
-            color: var(--light) !important;
-            font-weight: 600 !important;
-            font-size: 0.9rem !important;
+            color: var(--primary) !important;
+            font-weight: 700 !important;
+            font-size: 1.1rem !important;
         }
 
         .goog-te-gadget-icon {
@@ -1608,27 +1608,63 @@
 
         @media (max-width: 768px) {
             .header-content {
-                flex-wrap: wrap;
-            }
-
-            nav {
-                order: 3;
-                width: 100%;
-                margin-top: 20px;
-                display: none;
-            }
-
-            nav.active {
-                display: block;
-            }
-
-            nav ul {
                 flex-direction: column;
-                gap: 15px;
+                height: auto;
+                padding: 12px 0 8px 0;
+                gap: 12px;
             }
 
             .mobile-menu-btn {
+                display: none !important;
+            }
+
+            nav {
+                display: block !important;
+                position: static !important;
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+                width: 100%;
+                box-shadow: none !important;
+            }
+
+            nav ul {
+                display: flex !important;
+                flex-direction: row !important;
+                width: 100%;
+                overflow-x: auto;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+                gap: 10px !important;
+                padding: 0 15px 4px 15px !important;
+                box-sizing: border-box;
+            }
+
+            nav ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav ul li {
+                flex-shrink: 0;
+            }
+
+            nav ul li a {
                 display: block;
+                padding: 6px 14px !important;
+                border-radius: 20px !important;
+                font-size: 0.85rem !important;
+                background: rgba(0, 240, 255, 0.05);
+                border: 1px solid rgba(0, 240, 255, 0.15) !important;
+                white-space: nowrap;
+                transition: all 0.3s ease;
+            }
+
+            nav ul li a:hover,
+            nav ul li a.active {
+                background: rgba(0, 240, 255, 0.2);
+                border-color: rgba(0, 240, 255, 0.6) !important;
+                color: #fff;
+                box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
             }
 
             .hero h1 {
@@ -1655,17 +1691,32 @@
             }
 
             .tabs-header {
+                display: flex;
+                flex-wrap: nowrap;
                 overflow-x: auto;
-                white-space: nowrap;
-                padding: 10px 5px;
+                padding: 15px 5px;
+                gap: 10px;
                 -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Firefox */
+            }
+            
+            .tabs-header::-webkit-scrollbar {
+                display: none; /* Safari and Chrome */
             }
 
             .tab {
-                display: inline-block;
-                padding: 12px 18px;
+                flex: 0 0 auto;
+                padding: 10px 16px;
                 font-size: 0.9rem;
             }
+            
+            #google_translate_element,
+            .goog-te-banner-frame,
+            .skiptranslate,
+            iframe.goog-te-menu-frame {
+                display: none !important;
+            }
+            body { top: 0 !important; }
 
             .tab-content {
                 padding: 30px 20px;
@@ -1683,6 +1734,10 @@
 
             .blog-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 100px 0 60px;
             }
 
             /* Social Links Mobile - Hide in header, use footer only */
@@ -5039,15 +5094,39 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                                     if(t) t.classList.add('active');
                                     if(c) c.classList.add('active');
                                     n.forEach(link => link.classList.add('active'));
+                                    
+                                    const navMenu = document.getElementById('main-nav');
+                                    if (navMenu && navMenu.classList.contains('active')) {
+                                        navMenu.classList.remove('active');
+                                    }
                                 }
 
                                 tabs.forEach(t => t.addEventListener('click', () => {
                                     activateTab(t.dataset.tab);
                                     window.scrollTo({top: 0, behavior: 'smooth'});
                                 }));
+
+                                const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+                                const navMenu = document.getElementById('main-nav');
+                                if (mobileMenuBtn && navMenu) {
+                                    mobileMenuBtn.addEventListener('click', (e) => {
+                                        e.stopPropagation();
+                                        navMenu.classList.toggle('active');
+                                    });
+                                    document.addEventListener('click', (e) => {
+                                        if (navMenu.classList.contains('active') && !navMenu.contains(e.target)) {
+                                            navMenu.classList.remove('active');
+                                        }
+                                    });
+                                }
                                 
                                 document.querySelectorAll('.nav-link').forEach(l => {
                                     l.addEventListener('click', (e) => {
+                                        const navMenu = document.getElementById('main-nav');
+                                        if (navMenu && navMenu.classList.contains('active')) {
+                                            navMenu.classList.remove('active');
+                                        }
+                                        
                                         const tid = l.dataset.tab;
                                         if (tid === 'security' || tid === 'team') {
                                             const sid = tid === 'team' ? 'leadership-team' : 'security';
@@ -5084,7 +5163,7 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                                     }, 'google_translate_element');
                                 }
                                 const script = document.createElement('script');
-                                script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                                script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&hl=en';
                                 document.body.appendChild(script);
 
                                 activateTab('home');
