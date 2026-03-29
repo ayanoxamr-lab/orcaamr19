@@ -122,13 +122,22 @@
             font-weight: 900;
             background: var(--gradient);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        nav#main-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-left: auto;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px;
         }
 
         nav a {
@@ -179,6 +188,43 @@
             width: 0;
         }
 
+        /* Google Translate Widget Styling */
+        #google_translate_element {
+            margin-left: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .goog-te-gadget {
+            font-family: 'Exo 2', sans-serif !important;
+            color: var(--light) !important;
+        }
+
+        .goog-te-gadget-simple {
+            background-color: rgba(16, 16, 40, 0.6) !important;
+            border: 1px solid var(--card-border) !important;
+            padding: 6px 12px !important;
+            border-radius: 20px !important;
+            cursor: pointer !important;
+        }
+
+        .goog-te-menu-value span {
+            color: var(--light) !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+        }
+
+        .goog-te-gadget-icon {
+            display: none !important;
+        }
+
+        /* Language Selector Positioning */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -191,9 +237,9 @@
         /* Social Links */
         .social-links {
             display: flex;
-            gap: 12px;
-            margin-left: 25px;
+            gap: 15px;
             align-items: center;
+            justify-content: center;
         }
 
         .social-icon {
@@ -266,6 +312,7 @@
             margin-bottom: 1.5rem;
             background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             position: relative;
         }
@@ -1781,6 +1828,40 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Language Translation Widget Styles */
+        .goog-te-banner-frame { display: none !important; }
+        body { top: 0px !important; }
+        .goog-tooltip { display: none !important; }
+        .goog-tooltip:hover { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
+        
+        #google_translate_element {
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            z-index: 1000;
+        }
+        #google_translate_element select {
+            background-color: rgba(0, 10, 30, 0.8);
+            color: #00f0ff;
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        #google_translate_element select:hover {
+            border-color: #00f0ff;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+        #google_translate_element select option {
+            background-color: #0a0a1a;
+            color: #fff;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1806,36 +1887,28 @@
                 <nav id="main-nav">
                     <ul>
                         <li><a href="#" class="nav-link active" data-tab="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-tab="orca-ace">Orca-ACE</a></li>
+                        <li><a href="#" class="nav-link" data-tab="orca-os">Orca OS</a></li>
                         <li><a href="#" class="nav-link" data-tab="tokenomics">Tokenomics</a></li>
                         <li><a href="#" class="nav-link" data-tab="omniverse">Omniverse</a></li>
                         <li><a href="#" class="nav-link" data-tab="security">Security</a></li>
                         <li><a href="#" class="nav-link" data-tab="team">Team</a></li>
-                        <!-- Temporarily hidden: <li><a href="#" class="nav-link nav-cta" data-tab="download">Get Started</a></li> -->
                     </ul>
 
-                    <!-- Social Links -->
-                    <div class="social-links">
-                        <a href="https://www.youtube.com/@amrchain" target="_blank" title="YouTube"
-                            class="social-icon youtube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://x.com/amrchains" target="_blank" title="X (Twitter)"
-                            class="social-icon twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://github.com/orcaamr19" target="_blank" title="GitHub"
-                            class="social-icon github">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://vision.orcaamr.com" target="_blank" title="White Paper"
-                            class="social-icon whitepaper">
-                            <i class="fas fa-file-alt"></i>
-                        </a>
-                        <a href="https://t.me/orcaamr" target="_blank" title="Telegram" class="social-icon telegram">
-                            <i class="fab fa-telegram-plane"></i>
-                        </a>
+                    <div class="header-actions">
+                        <!-- Social Links -->
+                        <div class="social-links">
+                            <a href="https://www.youtube.com/@amrchain" target="_blank" title="YouTube" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://x.com/amrchains" target="_blank" title="X (Twitter)" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://github.com/orcaamr19" target="_blank" title="GitHub" class="social-icon github"><i class="fab fa-github"></i></a>
+                            <a href="https://vision.orcaamr.com" target="_blank" title="White Paper" class="social-icon whitepaper"><i class="fas fa-file-alt"></i></a>
+                            <a href="https://t.me/orcaamr" target="_blank" title="Telegram" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                        </div>
                     </div>
                 </nav>
+                
+                <!-- Google Translate Widget -->
+                <div id="google_translate_element"></div>
             </div>
         </div>
     </header>
@@ -1854,6 +1927,8 @@
 
             <div class="tabs-header">
                 <div class="tab active" data-tab="home">Home</div>
+                <div class="tab" data-tab="orca-ace">Orca-ACE</div>
+                <div class="tab" data-tab="orca-os">Orca OS</div>
                 <div class="tab" data-tab="tokenomics">Tokenomics</div>
                 <div class="tab" data-tab="economy">Economy</div>
                 <div class="tab" data-tab="omniverse">Omniverse</div>
@@ -1883,7 +1958,7 @@
                         <div class="feature-card">
                             <i class="fas fa-shield-alt feature-icon"></i>
                             <h3>Quantum Security</h3>
-                            <p>Military-grade quantum encryption and advanced AI-powered security protocols protect your
+                            <p>Military-grade quantum encryption and advanced sovereign security protocols protect your
                                 assets and data from future threats.</p>
                         </div>
                         <div class="feature-card">
@@ -1914,10 +1989,526 @@
                 </div>
 
 
-                <!-- Download Tab Content -->
+                <!-- Orca-ACE Tab Content (Closed Source Architecture) -->
+                <div class="tab-content" id="orca-ace-content">
+                    <div class="orca-os-header">
+                        <h2>ORCA-ACE: The Post-Transformer Era</h2>
+                        <h3 class="subtitle">Sovereign Intelligence Engine (V17)</h3>
+                        <p>While models like GPT, Gemini, and Claude remain trapped in legacy 2017 Transformer architectures, ORCA-ACE introduces a profound paradigm shift: a proprietary, GPU-independent Hyper-Dimensional Computing (HDC) engine.</p>
+                    </div>
+
+                    <div class="os-features-grid grid-3">
+                        <div class="os-feature-card">
+                            <div class="card-glow magenta"></div>
+                            <i class="fas fa-network-wired feature-icon pill"></i>
+                            <h3>The End of the GPU Monopoly</h3>
+                            <p>Transformers demand colossal $100M+ data centers and massive GPU arrays. ORCA-ACE utilizes Sparse Binary Hypervectors (1 Million dimensions), natively running supreme cognitive synthesis on standard CPUs with a sub-megabyte footprint.</p>
+                        </div>
+                        <div class="os-feature-card">
+                            <div class="card-glow cyan"></div>
+                            <i class="fas fa-project-diagram feature-icon pill"></i>
+                            <h3>1 Trillion Token Context</h3>
+                            <p>Legacy AI is crippled by static KV-Cache limitations. ORCA-ACE integrates a 20-tier Fractal engine, effortlessly maintaining a 1,000,000,000,000 token context window, tracking infinite logic paths simultaneously without context degradation.</p>
+                        </div>
+                        <div class="os-feature-card">
+                            <div class="card-glow purple"></div>
+                            <i class="fas fa-brain feature-icon pill"></i>
+                            <h3>Iterative Binding Adaptation</h3>
+                            <p>Standard LLMs freeze their neural weighting post-training. ORCA-ACE learns instantaneously from every real-time node interaction using dynamic continuous binding, achieving true temporal continuity rather than static text prediction.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Orca OS Tab Content -->
+                <div class="tab-content" id="orca-os-content">
+                    <div class="orca-os-header">
+                        <h2>Orca OS: The Cognitive Kernel</h2>
+                        <h3 class="subtitle">Distributed Intelligence at Ring-0.</h3>
+                        <p>A completely sovereign, bare-metal operating system built natively in Rust. It does not run AI as a background application; it embeds the HDC Matrix directly into the kernel, eliminating all virtualization latency found in Linux or Windows.</p>
+                    </div>
+
+                    <div class="os-features-grid grid-3">
+                        <div class="os-feature-card">
+                            <div class="card-glow cyan"></div>
+                            <i class="fas fa-microchip feature-icon pill"></i>
+                            <h3>Genesis Sovereign Microkernel</h3>
+                            <p>Written exclusively in Rust for extreme memory safety and performance. It seamlessly manages the AI engine as a native root system resource, operating inherently peer-to-peer without central cloud server authorizations.</p>
+                        </div>
+                        <div class="os-feature-card">
+                            <div class="card-glow purple"></div>
+                            <i class="fas fa-shield-alt feature-icon pill"></i>
+                            <h3>Integrated Kyber-768 Security</h3>
+                            <p>Military-grade Post-Quantum encryption is baked intrinsically into the OS stack itself. The hardware-level security module guarantees cryptographic immunity from both current intrusion methods and future quantum attacks.</p>
+                        </div>
+                        <div class="os-feature-card">
+                            <div class="card-glow magenta"></div>
+                            <i class="fas fa-network-wired feature-icon pill"></i>
+                            <h3>Ghost Mesh (Phantom Protocol)</h3>
+                            <p>The networking layer implements an obfuscated routing protocol. Communication via the Intel PCIe architecture is shredded into HDC noise, rendering the OS entirely impervious to traffic interception or geographical tracing.</p>
+                        </div>
+                    </div>
+
+                    <div class="os-performance-box">
+                        <div class="perf-text">
+                            <h3>Unrivaled Autonomous Efficiency</h3>
+                            <p>While enterprise AI models depend entirely on continuous cloud connectivity and vast GPU farms, Orca OS executes the apex cognitive matrix entirely offline. It deploys advanced reasoning and shielding natively on just 12GB of generic RAM.
+                            </p>
+                        </div>
+                        <div class="perf-stats">
+                            <div class="stat-item">
+                                <span class="label">Kernel Footprint</span>
+                                <span class="value">< 10MB</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">Syscall Latency</span>
+                                <span class="value">< 0.1ms</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">HDC Execution</span>
+                                <span class="value">Ring-0 Native</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <style>
+                        .orca-os-header {
+                            text-align: center;
+                            margin-bottom: 50px;
+                        }
+
+                        .orca-os-header h2 {
+                            font-size: 2.8rem;
+                            color: #00f0ff;
+                            letter-spacing: 2px;
+                        }
+
+                        .orca-os-header .subtitle {
+                            color: #7b42f5;
+                            font-size: 1.2rem;
+                            text-transform: uppercase;
+                        }
+
+                        .grid-3 {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 25px;
+                            margin-bottom: 50px;
+                        }
+
+                        .os-feature-card {
+                            position: relative;
+                            background: rgba(16, 20, 35, 0.9);
+                            border: 1px solid rgba(0, 240, 255, 0.15);
+                            padding: 35px;
+                            border-radius: 25px;
+                            text-align: center;
+                            overflow: hidden;
+                            transition: var(--transition);
+                        }
+
+                        .os-feature-card:hover {
+                            border-color: #00f0ff;
+                            transform: translateY(-5px);
+                            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+                        }
+
+                        .card-glow {
+                            position: absolute;
+                            inset: -40%;
+                            z-index: 0;
+                            filter: blur(50px);
+                            opacity: 0.1;
+                        }
+
+                        .card-glow.cyan {
+                            background: radial-gradient(circle, #00f0ff, transparent 70%);
+                        }
+
+                        .card-glow.purple {
+                            background: radial-gradient(circle, #7b42f5, transparent 70%);
+                        }
+
+                        .card-glow.magenta {
+                            background: radial-gradient(circle, #ff00ff, transparent 70%);
+                        }
+
+                        .os-feature-card i.pill {
+                            position: relative;
+                            font-size: 2.8rem;
+                            color: #00f0ff;
+                            margin-bottom: 20px;
+                            text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+                        }
+
+                        .os-feature-card h3 {
+                            position: relative;
+                            color: #00f0ff;
+                            font-size: 1.4rem;
+                            margin-bottom: 15px;
+                            letter-spacing: 1px;
+                        }
+
+                        .os-feature-card p {
+                            position: relative;
+                            font-size: 0.9rem;
+                            color: #b0b0ff;
+                            line-height: 1.6;
+                        }
+
+                        .os-performance-box {
+                            display: flex;
+                            gap: 40px;
+                            background: rgba(0, 240, 255, 0.03);
+                            border: 1px solid rgba(0, 240, 255, 0.2);
+                            padding: 45px;
+                            border-radius: 30px;
+                            align-items: center;
+                            box-shadow: inset 0 0 40px rgba(0, 240, 255, 0.05);
+                        }
+
+                        .perf-text {
+                            flex: 2;
+                        }
+
+                        .perf-text h3 {
+                            color: #00f0ff;
+                            font-size: 1.8rem;
+                            margin-bottom: 15px;
+                        }
+
+                        .perf-text p {
+                            color: #d0c0ff;
+                            line-height: 1.7;
+                        }
+
+                        .perf-stats {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 20px;
+                        }
+
+                        .stat-item {
+                            display: flex;
+                            justify-content: space-between;
+                            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+                            padding-bottom: 8px;
+                        }
+
+                        .stat-item .label {
+                            color: #8888ff;
+                            font-size: 0.85rem;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                        }
+
+                        .stat-item .value {
+                            color: #00eaff;
+                            font-weight: 700;
+                            font-family: 'Orbitron', sans-serif;
+                        }
+
+                        @media (max-width: 992px) {
+                            .grid-3 {
+                                grid-template-columns: 1fr;
+                            }
+
+                            .os-performance-box {
+                                flex-direction: column;
+                            }
+                        }
+                    </style>
+                </div>
+                <!-- Orca ACE Tab Content -->
+                <div class="tab-content" id="orca-ace-content">
+                    <div class="orca-ace-intro">
+                        <h2>ORCA-ACE: Sovereign Economic Mastermind</h2>
+                        <h3 class="subtitle">Managing the $100T Reserve & NVR Stability.</h3>
+                        <p>ORCA-ACE acts as the "Mastermind" of the AMR economy. It manages the stability of the **$100 Trillion Reserve** by analyzing **Intent Indicators** for cross-chain and metal trades, ensuring NVR flexibility and market protection. **AMR is directly supported by the AI, as all ORCA-ACE subscriptions and services must be paid in AMR.**</p>
+                    </div>
+
+                    <div class="orca-showcase grid-2">
+                        <div class="showcase-card hdc-engine">
+                            <i class="fas fa-brain feature-icon"></i>
+                            <h3>HDC Architecture</h3>
+                            <p>Moving beyond scalar neural weights, ORCA-ACE operates in 135 Million-dimensional vector
+                                space. Every block, every transaction, and every semantic concept is assigned a unique,
+                                high-density signature that is virtually immune to noise and errors.</p>
+                            <ul class="spec-list">
+                                <li><strong>General AI (Super-G):</strong> Competitive reasoning across all media types.
+                                </li>
+                                <li><strong>AMR-Powered Access:</strong> All AI features require AMR subscriptions.</li>
+                                <li><strong>135.1M HDC Dimensions:</strong> Superior semantic understanding.</li>
+                                <li><strong>Infinite Modality:</strong> Generative text, image, video, and audio.</li>
+                            </ul>
+                        </div>
+
+                        <div class="showcase-card swarm-consensus focus-generative">
+                            <i class="fas fa-magic feature-icon highlight"></i>
+                            <h3>Multimodal Super-Generative Intelligence</h3>
+                            <p>ORCA-ACE is the first engine to achieve **Universal Generative Intelligence**. Every
+                                piece of content—be it text, image, or video—is synthesized directly from the
+                                135M-dimensional semantic core, ensuring a level of fidelity and "reasoning" far beyond
+                                traditional models.</p>
+
+                            <div class="generative-details-grid">
+                                <div class="gen-detail-item">
+                                    <div class="gen-header"><i class="fas fa-file-alt"></i>
+                                        <h4>Super-Text Generation</h4>
+                                    </div>
+                                    <p>Context-aware reasoning that eliminates hallucinations by anchoring every word to
+                                        the HDC consensus matrix.</p>
+                                </div>
+                                <div class="gen-detail-item">
+                                    <div class="gen-header"><i class="fas fa-image"></i>
+                                        <h4>Ultra-HD Imaging</h4>
+                                    </div>
+                                    <p>Instantaneous synthesis of 16K resolution visuals with physics-accurate lighting
+                                        and semantic consistency.</p>
+                                </div>
+                                <div class="gen-detail-item">
+                                    <div class="gen-header"><i class="fas fa-video"></i>
+                                        <h4>Neural Video Synthesis</h4>
+                                    </div>
+                                    <p>Temporal-consistent video generation at 4K/120fps, managed by the 1M Agent Swarm
+                                        for perfect motion logic.</p>
+                                </div>
+                                <div class="gen-detail-item">
+                                    <div class="gen-header"><i class="fas fa-music"></i>
+                                        <h4>Atmospheric Audio</h4>
+                                    </div>
+                                    <p>135M-dimensional waveform synthesis creating ultra-realistic soundscapes and
+                                        perfect neural voice cloning.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Traditional Transformers suffer from \(O(N^2)\) computational complexity and massive VRAM
+                        requirements. ORCA-ACE achieves better-than-human reasoning with a fraction of the power.</p>
+
+                    <div class="comp-table">
+                        <div class="comp-row head">
+                            <span>Feature</span>
+                            <span>Transformers</span>
+                            <span>ORCA-ACE (HDC)</span>
+                        </div>
+                        <div class="comp-row">
+                            <span>Complexity</span>
+                            <span class="bad">Quadratic \(O(I^2)\)</span>
+                            <span class="good">Constant \(O(1)\)</span>
+                        </div>
+                        <div class="comp-row">
+                            <span>Multimodal</span>
+                            <span class="bad">Siloed Models</span>
+                            <span class="good">Universal Fabric</span>
+                        </div>
+                        <div class="comp-row">
+                            <span>RAM Usage</span>
+                            <span class="bad">100GB+ VRAM</span>
+                            <span class="good">10GB Fixed RAM</span>
+                        </div>
+                        <div class="comp-row">
+                            <span>Sovereignty</span>
+                            <span class="bad">Centralized Clouds</span>
+                            <span class="good">Decentralized On-Chain</span>
+                        </div>
+                    </div>
+
+                    <div class="orca-deep-tech">
+                        <h2>Architectural Sovereignty</h2>
+                        <p>The ORCA-ACE engine is built as a **Sovereign Cognitive Matrix**. It treats the entire
+                            blockchain as a unified mental model, where transactions are verified not just by their
+                            hash, but by their "Intent Vector". This ensures 100% network integrity without the need for
+                            human auditors.</p>
+
+                        <div class="tech-pill-container">
+                            <span class="tech-pill">Memory-Mapped Swarm</span>
+                            <span class="tech-pill">Lattice Cryptography</span>
+                            <span class="tech-pill">Semantic Replay Protection</span>
+                            <span class="tech-pill">HyperFinality Engine</span>
+                        </div>
+                    </div>
+
+                    <style>
+                        .orca-ace-intro {
+                            text-align: center;
+                            margin-bottom: 50px;
+                        }
+
+                        .orca-ace-intro h2 {
+                            font-size: 2.8rem;
+                            color: var(--primary);
+                        }
+
+                        .orca-ace-intro .subtitle {
+                            color: var(--secondary);
+                            margin-top: -10px;
+                            font-size: 1.4rem;
+                            letter-spacing: 2px;
+                        }
+
+                        .grid-2 {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 30px;
+                            margin-bottom: 50px;
+                        }
+
+                        .showcase-card {
+                            background: var(--card-bg);
+                            border: 1px solid var(--card-border);
+                            padding: 30px;
+                            border-radius: 20px;
+                            backdrop-filter: blur(10px);
+                            transition: var(--transition);
+                        }
+
+                        .showcase-card:hover {
+                            border-color: var(--primary);
+                            transform: translateY(-5px);
+                        }
+
+                        .showcase-card h3 {
+                            color: var(--primary);
+                            font-size: 1.8rem;
+                        }
+
+                        .spec-list {
+                            list-style: none;
+                            margin-top: 20px;
+                        }
+
+                        .spec-list li {
+                            margin-bottom: 10px;
+                            color: #b0b0ff;
+                            border-left: 3px solid var(--primary);
+                            padding-left: 15px;
+                        }
+
+                        .comp-table {
+                            margin-top: 20px;
+                            border: 1px solid var(--card-border);
+                            border-radius: 10px;
+                            overflow: hidden;
+                            font-size: 0.9rem;
+                        }
+
+                        .comp-row {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr 1fr;
+                            padding: 12px;
+                            border-bottom: 1px solid var(--card-border);
+                        }
+
+                        .comp-row.head {
+                            background: rgba(0, 234, 255, 0.1);
+                            font-weight: 700;
+                            color: var(--primary);
+                        }
+
+                        .comp-row span {
+                            text-align: center;
+                        }
+
+                        .comp-row .bad {
+                            color: #ff4545;
+                        }
+
+                        .comp-row .good {
+                            color: var(--primary);
+                            font-weight: 700;
+                        }
+
+                        .focus-generative .highlight {
+                            color: #ff00ff;
+                            text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+                        }
+
+                        .generative-details-grid {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 20px;
+                            margin-top: 30px;
+                            text-align: left;
+                        }
+
+                        .gen-detail-item {
+                            background: rgba(255, 0, 255, 0.03);
+                            border: 1px solid rgba(255, 0, 255, 0.15);
+                            padding: 20px;
+                            border-radius: 15px;
+                            transition: var(--transition);
+                        }
+
+                        .gen-detail-item:hover {
+                            background: rgba(255, 0, 255, 0.08);
+                            border-color: #ff00ff;
+                            transform: translateY(-3px);
+                        }
+
+                        .gen-header {
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                            margin-bottom: 10px;
+                            color: #ffbaff;
+                        }
+
+                        .gen-header i {
+                            color: #ff00ff;
+                            font-size: 1.2rem;
+                        }
+
+                        .gen-header h4 {
+                            margin: 0;
+                            font-size: 1.1rem;
+                            letter-spacing: 1px;
+                        }
+
+                        .gen-detail-item p {
+                            font-size: 0.85rem;
+                            color: #d0c0ff;
+                            line-height: 1.5;
+                            margin: 0;
+                        }
+
+                        .orca-deep-tech {
+                            text-align: center;
+                            padding: 40px;
+                            background: rgba(123, 66, 245, 0.05);
+                            border-radius: 30px;
+                            border: 1px dashed var(--card-border);
+                        }
+
+                        .tech-pill-container {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            gap: 15px;
+                            margin-top: 25px;
+                        }
+
+                        .tech-pill {
+                            padding: 8px 20px;
+                            background: var(--darker);
+                            border: 1px solid var(--primary);
+                            border-radius: 50px;
+                            color: var(--primary);
+                            font-weight: 600;
+                            font-size: 0.85rem;
+                        }
+
+                        @media (max-width: 992px) {
+                            .grid-2 {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                    </style>
+                </div>
                 <div class="tab-content" id="download-content">
                     <h2>Download AMRChain</h2>
-                    <p>Get started with AMRChain: Desktop, Mobile, Orca OS ISO, Browser Extension, Omniverse, Orca AI,
+                    <p>Get started with AMRChain: Desktop, Mobile, Orca OS ISO, Browser Extension, Omniverse,
                         and the Orvexa Developer SDK.</p>
 
                     <div class="download-options">
@@ -1969,13 +2560,6 @@
                             <a href="#" class="btn btn-disabled">Coming Soon</a>
                         </div>
 
-                        <!-- Orca AI -->
-                        <div class="download-card">
-                            <i class="fas fa-robot download-icon"></i>
-                            <h3>Orca AI</h3>
-                            <p>Artificial intelligence will completely change the world.</p>
-                            <a href="#" class="btn btn-disabled">Coming Soon</a>
-                        </div>
 
                         <!-- SDK Orvexa -->
                         <div class="download-card">
@@ -2013,25 +2597,21 @@
                     </div>
                 </div>
 
-                <!-- Tokenomics Tab Content -->
-                <div class="tab-content" id="tokenomics-content">
-                    <h2>AMRChain Tokenomics</h2>
-                    <p>
-                        The tokenomics system in AMRChain is built on a limited supply + rare assets + liquidity pools
-                        that </p>
+                    <div class="tab-content" id="tokenomics-content">
+                        <h2>AMRChain Tokenomics</h2>
+
 
                     <div class="tokenomics-content">
-                        <div class="tokenomics-chart">
-                        </div>
-
 
                         <div class="tokenomics-details">
                             <div class="token-detail">
                                 <h4>AMR (Native)</h4>
-                                <p>is the native and scarce asset of AMR — a utility and value token with a fixed , used
-                                    for transaction fees, staking rewards, and network operations. Backed by
-                                    digital-metal reserves, it represents the primary store of value and energy within
-                                    the amr economy. <strong>19M</strong> AMR.</p>
+                                <p>is the native and scarce asset within the AMR economy. Backed by digital-metal reserves, it represents the primary fuel for the entire AI and ledger ecosystem. <strong>19M</strong> AMR.</p>
+                            </div>
+
+                            <div class="token-detail">
+                                <h4>ORCA-ACE</h4>
+                                <p>The AMR token is supported by artificial intelligence, as all ORCA-ACE subscriptions are paid exclusively in <strong>AMR</strong>.</p>
                             </div>
                             <div class="token-detail">
                                 <h4>NVR (stablecoin</h4>
@@ -2133,9 +2713,9 @@
                     <p class="intro">
                         The AMR Economic Architecture is a fully engineered digital economy built on mathematical
                         precision, scarcity-based value, and energetic balance. It is designed to function as a
-                        self-sustaining monetary ecosystem that does not rely on fiat currency or speculative inflation.
-                        Every component—from the base currency to the rare metals and dynamic liquidity pools—interacts
-                        harmoniously to form a civilization-scale financial system.
+                        self-sustaining monetary ecosystem where the **ORCA-ACE AI** orchestrates liquidity. All
+                        AI-driven services, node subscriptions, and cognitive audits are settled via **AMR tokens**,
+                        ensuring a constant demand loop.
                     </p>
 
                     <!-- 1. CURRENCY LAYER -->
@@ -2216,6 +2796,14 @@
                         new metals or equivalent-grade assets will ever be introduced, preserving scarcity permanently.
                     </p>
 
+                    <!-- 9. COGNITIVE ECONOMIC ORCHESTRATION -->
+                    <h3 class="sub-title">9. Cognitive Economic Orchestration</h3>
+                    <p class="intro">
+                        The **ORCA-ACE AI** is the "Brain" of the AMR economy. Unlike static protocols, it actively manages
+                        the stability of the $100 Trillion reserve and protects the metals market from manipulation. 
+                        <strong>Access to the ORCA-ACE cognitive matrix and all auditing services is powered exclusively by AMR subscriptions.</strong>
+                    </p>
+
                     <!-- 3. DYNAMIC LIQUIDITY POOLS -->
                     <h3 class="sub-title">3. Dynamic Liquidity Pools</h3>
                     <p class="intro">
@@ -2273,18 +2861,22 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
                     </ul>
                     <p>
                         Collected revenue is redistributed: a portion strengthens the reserve (increasing pool weight),
-                        another rewards stakers securing the network, and the rest supports the development treasury —
-                        ensuring a closed economic loop.
-                    </p>
-
-                    <!-- 7. OMNIVERSE ECONOMY -->
+                    <!-- 7. OMNIVERSE INTEGRATION -->
                     <h3 class="sub-title">7. Omniverse Integration</h3>
                     <p class="intro">
-                        The AMR economy seamlessly extends into the Omniverse — an interconnected digital realm where
-                        energy, assets, and value move freely between worlds. Digital metals such as IonFluid and
-                        Lexirium act as the power sources for travel, world-building, and metaverse expansion. Every
-                        in-game or metaverse action feeds demand back into the blockchain layer, completing the feedback
-                        cycle between <strong>Digital Worlds → Metals → NVR → AMR</strong>.
+                        The AMR economy seamlessly extends into the Omniverse where digital metals act as the power sources for travel and world-building. Every action feeds demand back into the blockchain layer.
+                    </p>
+
+                    <!-- 8. CROSS-CHAIN INTEROPERABILITY -->
+                    <h3 class="sub-title">8. Cross-Chain Interoperability</h3>
+                    <p class="intro">
+                        AMR ensures absolute liquidity across all supported networks through its sovereign bridge protocols, allowing seamless value movement without friction.
+                    </p>
+
+                    <!-- 9. ORCA-ACE -->
+                    <h3 class="sub-title">9. ORCA-ACE</h3>
+                    <p class="intro">
+                        The AMR token is supported by artificial intelligence, as all ORCA-ACE subscriptions are paid exclusively in AMR.
                     </p>
 
                     <p class="note">
@@ -3700,11 +4292,7 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
 
                         init();
                         draw();
-
-                        try {
-                            const container = document.getElementById('sirius-content');
-                            if (container) container.siriusStatus = { ready: true, nodeCount: NODE_COUNT };
-                        } catch (e) { }
+                    })();
                 </script>
 
                 <!-- Luna Classic Tab Content -->
@@ -4163,690 +4751,346 @@ Displayed_AMR_Price = Fair_AMR_Price × Market_Deviation_Factor</pre>
 
                 <!-- Luna Canvas Animation Script -->
                 <script>
-                        (() => {
-                            const lunaCanvas = document.getElementById('luna-canvas');
-                            if (!lunaCanvas) return;
-                            const lunaCtx = lunaCanvas.getContext('2d');
-                            let lw, lh, lt = 0;
+                    (() => {
+                        const lunaCanvas = document.getElementById('luna-canvas');
+                        if (!lunaCanvas) return;
+                        const lunaCtx = lunaCanvas.getContext('2d');
+                        let lw, lh, lt = 0;
 
-                            const lunaResize = () => {
-                                lw = lunaCanvas.width = lunaCanvas.offsetWidth;
-                                lh = lunaCanvas.height = lunaCanvas.offsetHeight;
-                            };
-                            window.addEventListener('resize', lunaResize);
-                            lunaResize();
+                        const lunaResize = () => {
+                            lw = lunaCanvas.width = lunaCanvas.offsetWidth;
+                            lh = lunaCanvas.height = lunaCanvas.offsetHeight;
+                        };
+                        window.addEventListener('resize', lunaResize);
+                        lunaResize();
 
-                            const lunaParticles = Array.from({ length: 60 }, () => ({
-                                x: Math.random() * lw,
-                                y: Math.random() * lh,
-                                r: Math.random() * 2 + 0.5,
-                                dx: (Math.random() - 0.5) * 0.3,
-                                dy: (Math.random() - 0.5) * 0.3,
-                                hue: 180 + Math.random() * 60
-                            }));
+                        const lunaParticles = Array.from({ length: 60 }, () => ({
+                            x: Math.random() * lw,
+                            y: Math.random() * lh,
+                            r: Math.random() * 2 + 0.5,
+                            dx: (Math.random() - 0.5) * 0.3,
+                            dy: (Math.random() - 0.5) * 0.3,
+                            hue: 180 + Math.random() * 60
+                        }));
 
-                            function lunaDraw() {
-                                lunaCtx.fillStyle = 'rgba(5,5,20,0.12)';
-                                lunaCtx.fillRect(0, 0, lw, lh);
+                        function lunaDraw() {
+                            lunaCtx.fillStyle = 'rgba(5,5,20,0.12)';
+                            lunaCtx.fillRect(0, 0, lw, lh);
 
-                                // Draw moon glow
-                                const moonGrad = lunaCtx.createRadialGradient(lw * 0.8, lh * 0.2, 0, lw * 0.8, lh * 0.2, 150);
-                                moonGrad.addColorStop(0, 'rgba(0, 240, 255, 0.15)');
-                                moonGrad.addColorStop(0.5, 'rgba(123, 66, 245, 0.08)');
-                                moonGrad.addColorStop(1, 'transparent');
-                                lunaCtx.fillStyle = moonGrad;
-                                lunaCtx.fillRect(0, 0, lw, lh);
+                            // Draw moon glow
+                            const moonGrad = lunaCtx.createRadialGradient(lw * 0.8, lh * 0.2, 0, lw * 0.8, lh * 0.2, 150);
+                            moonGrad.addColorStop(0, 'rgba(0, 240, 255, 0.15)');
+                            moonGrad.addColorStop(0.5, 'rgba(123, 66, 245, 0.08)');
+                            moonGrad.addColorStop(1, 'transparent');
+                            lunaCtx.fillStyle = moonGrad;
+                            lunaCtx.fillRect(0, 0, lw, lh);
 
-                                // Draw particles
-                                for (const p of lunaParticles) {
-                                    lunaCtx.beginPath();
-                                    lunaCtx.fillStyle = `hsla(${p.hue}, 100%, 70%, 0.8)`;
-                                    lunaCtx.shadowBlur = 10;
-                                    lunaCtx.shadowColor = `hsla(${p.hue}, 100%, 60%, 0.6)`;
-                                    lunaCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                                    lunaCtx.fill();
-                                    lunaCtx.shadowBlur = 0;
+                            // Draw particles
+                            for (const p of lunaParticles) {
+                                lunaCtx.beginPath();
+                                lunaCtx.fillStyle = `hsla(${p.hue}, 100%, 70%, 0.8)`;
+                                lunaCtx.shadowBlur = 10;
+                                lunaCtx.shadowColor = `hsla(${p.hue}, 100%, 60%, 0.6)`;
+                                lunaCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                                lunaCtx.fill();
+                                lunaCtx.shadowBlur = 0;
 
-                                    p.x += p.dx;
-                                    p.y += p.dy;
-                                    if (p.x < 0 || p.x > lw) p.dx *= -1;
-                                    if (p.y < 0 || p.y > lh) p.dy *= -1;
-                                }
-
-                                lt++;
-                                requestAnimationFrame(lunaDraw);
+                                p.x += p.dx;
+                                p.y += p.dy;
+                                if (p.x < 0 || p.x > lw) p.dx *= -1;
+                                if (p.y < 0 || p.y > lh) p.dy *= -1;
                             }
-                            lunaDraw();
-                        })();
+
+                            lt++;
+                            requestAnimationFrame(lunaDraw);
+                        }
+                        lunaDraw();
+                    })();
                 </script>
 
+                <div class="luna-note" style="background: rgba(0, 234, 255, 0.05); padding: 25px; border-radius: 15px; border: 1px dashed var(--primary); margin-top: 30px;">
+                    <p>AMR utilizes advanced architectural frameworks to ensure long-term sustainability.</p>
+                </div>
+
                 <!-- Security Section -->
-                <section class="security">
+                <section class="security" id="security">
                     <div class="container">
                         <div class="section-title">
                             <h2>Quantum Security</h2>
-                            <p>AMR implements military-grade security measures to protect your assets and data from
-                                current and future threats.</p>
+                            <p>AMR implements military-grade security measures to protect your assets and data from current and future threats.</p>
                         </div>
 
                         <div class="security-features">
                             <div class="security-card">
                                 <i class="fas fa-lock security-icon"></i>
                                 <h3>Quantum-Resistant Cryptography</h3>
-                                <p>Our post-quantum cryptographic algorithms protect against attacks from quantum
-                                    computers, future-proofing your assets.</p>
+                                <p>Our post-quantum cryptographic algorithms protect against attacks from quantum computers, future-proofing your assets.</p>
                             </div>
                             <div class="security-card">
                                 <i class="fas fa-shield-alt security-icon"></i>
                                 <h3>AI-Powered Threat Detection</h3>
-                                <p>Advanced machine learning algorithms continuously monitor the network for suspicious
-                                    activities and potential threats.</p>
+                                <p>Advanced machine learning algorithms continuously monitor the network for suspicious activities and potential threats.</p>
                             </div>
                             <div class="security-card">
                                 <i class="fas fa-fingerprint security-icon"></i>
                                 <h3>Biometric Authentication</h3>
-                                <p>Multi-factor authentication including biometric verification ensures only authorized
-                                    access to your digital assets.</p>
+                                <p>Multi-factor authentication including biometric verification ensures only authorized access to your digital assets.</p>
                             </div>
                             <div class="security-card">
                                 <i class="fas fa-user-shield security-icon"></i>
                                 <h3>Decentralized Identity</h3>
-                                <p>Self-sovereign identity solutions give you complete control over your personal data
-                                    and digital identity.</p>
+                                <p>Self-sovereign identity solutions give you complete control over your personal data and digital identity.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-
-                <!-- === Leadership Team (English Version – Emphasizing AYNUR’s Dominance, Simplified Icons) === -->
-                <section id="leadership-team" aria-labelledby="leadership-title">
+                <!-- Leadership Team -->
+                <section id="leadership-team" class="leadership-section">
                     <div class="container">
                         <div class="section-title">
-                            <h2 id="leadership-title">Our Leadership Team</h2>
-                            <p>The minds behind AMRChain — supreme intelligence, flawless engineering, and an economy
-                                powered by rarity and cosmic design.</p>
+                            <h2>Sovereign Leadership</h2>
+                            <p>The architects of the Cognitive Matrix — Engineering perfection into the AMRChain DNA.</p>
                         </div>
 
-                        <!-- AYNUR — CEO -->
-                        <article class="leader-card aynur" aria-labelledby="aynur-name">
-                            <div class="leader-bg-glow gold"></div>
-
-                            <!-- Icon -->
-                            <div class="leader-icon">
-                                <i class="fas fa-user-astronaut"></i>
-                            </div>
-
-                            <div class="leader-content">
-                                <h3 class="leader-name" id="aynur-name">AYNUR</h3>
-                                <h4 class="leader-role">Chief Executive Officer — CEO</h4>
-
-                                <ul class="leader-skills">
-                                    <li>Strategic Planning — defines the long-term roadmap and organizational direction.
-                                    </li>
-                                    <li>Blockchain network engineer
-                                    </li>
-
-                                    <li>Executive Leadership — supervises teams, operations, and internal decision
-                                        structures.</li>
-                                    <li>Economic Architecture — develops the monetary model and value framework of
-                                        orcaamr.</li>
-                                    <li>Product & Ecosystem Governance — oversees protocol design, UX standards, and
-                                        development priorities.</li>
-                                    <li>Institutional & Exchange Relations — manages partnerships, funding negotiations,
-                                        and regulatory alignment.</li>
-                                    <li>Risk, Compliance & Security Oversight — ensures operational integrity and
-                                        adherence to international standards.</li>
+                        <div class="team-grid">
+                            <!-- AYNUR -->
+                            <div class="leader-card aynur">
+                                <div class="leader-header-centered">
+                                    <div class="leader-icon-centered">
+                                        <i class="fas fa-user-astronaut"></i>
+                                    </div>
+                                    <h3 class="leader-name">AYNUR</h3>
+                                    <span class="leader-role">Chief Executive Officer — CEO</span>
+                                </div>
+                                <ul class="leader-skills-simple">
+                                    <li>Strategic Planning — defines the long-term roadmap and organizational direction.</li>
+                                    <li>Blockchain network engineer</li>
+                                    <li>Executive Leadership — supervises teams, operations, and internal decision structures.</li>
+                                    <li>Economic Architecture — develops the monetary model and value framework of orcaamr.</li>
+                                    <li>Product & Ecosystem Governance — oversees protocol design, UX standards, and development priorities.</li>
+                                    <li>Institutional & Exchange Relations — manages partnerships, funding negotiations, and regulatory alignment.</li>
+                                    <li>Risk, Compliance & Security Oversight — ensures operational integrity and adherence to international standards.</li>
                                 </ul>
-
-                            </div>
-                        </article>
-
-                        <!-- JIHAN — COO -->
-                        <article class="leader-card jihan" aria-labelledby="jihan-name">
-                            <div class="leader-bg-glow silver"></div>
-
-                            <!-- Icon -->
-                            <div class="leader-icon">
-                                <i class="fas fa-microchip"></i>
                             </div>
 
-                            <div class="leader-content">
-                                <h3 class="leader-name" id="jihan-name">JIHAN</h3>
-                                <h4 class="leader-role">Chief Operating Officer — COO</h4>
-
-                                <ul class="leader-skills">
-                                    <li>Layer-1 Core Engineering — implementation of consensus, networking, and virtual
-                                        machine logic.</li>
-                                    <li>Smart Contract Architecture — design and maintenance of Orvexa and
-                                        Solidity-based systems.</li>
-                                    <li>Cross-Chain Infrastructure — development of bridges, oracles, and hybrid DEX/CEX
-                                        mechanisms.</li>
-                                    <li>Cybersecurity and Network Defense — enforcement of cryptographic standards and
-                                        anomaly detection systems.</li>
-                                    <li>Application and Interface Development — oversight of frontend, app clients, and
-                                        developer tooling.</li>
-                                    <li>Performance and Scaling — network optimization, debugging, and global node
-                                        distribution management.</li>
+                            <!-- JIHAN -->
+                            <div class="leader-card jihan">
+                                <div class="leader-header-centered">
+                                    <div class="leader-icon-centered">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <h3 class="leader-name">JIHAN</h3>
+                                    <span class="leader-role">Chief Operating Officer — COO</span>
+                                </div>
+                                <ul class="leader-skills-simple">
+                                    <li>Layer-1 Core Engineering — implementation of consensus, networking, and virtual machine logic.</li>
+                                    <li>Smart Contract Architecture — design and maintenance of Orvexa and Solidity-based systems.</li>
+                                    <li>Cross-Chain Infrastructure — development of bridges, oracles, and hybrid DEX/CEX mechanisms.</li>
+                                    <li>Cybersecurity and Network Defense — enforcement of cryptographic standards and anomaly detection systems.</li>
+                                    <li>Application and Interface Development — oversight of frontend, app clients, and developer tooling.</li>
+                                    <li>Performance and Scaling — network optimization, debugging, and global node distribution management.</li>
                                 </ul>
-
                             </div>
-                        </article>
+                        </div>
                     </div>
                 </section>
 
-                <!-- === Leadership Team Styles === -->
                 <style>
-                    #leadership-team {
-                        position: relative;
-                        padding: 100px 0 120px;
-                        background: radial-gradient(circle at 50% 50%, rgba(5, 5, 15, 1), rgba(0, 0, 0, 0.96));
-                        overflow: hidden;
-                        color: #eafaff;
-                        text-align: center;
+                    #leadership-team { 
+                        position: relative; 
+                        padding: 120px 0; 
+                        background: radial-gradient(circle at 50% 50%, #050510, #000); 
                     }
-
-                    #leadership-team .section-title h2 {
-                        color: #00f0ff;
-                        text-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+                    .team-grid { 
+                        display: flex; 
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 40px; 
+                        max-width: 650px; 
+                        margin: 60px auto 0; 
                     }
-
-                    .leader-card {
-                        position: relative;
-                        margin: 70px auto;
-                        max-width: 900px;
-                        padding: 60px 40px;
-                        border-radius: 20px;
-                        background: rgba(10, 14, 24, 0.78);
-                        border: 1px solid rgba(0, 240, 255, 0.14);
-                        box-shadow: 0 14px 48px rgba(0, 0, 0, 0.35);
-                        transition: all 0.5s ease;
-                    }
-
-                    .leader-card:hover {
-                        transform: translateY(-8px);
-                        box-shadow: 0 22px 70px rgba(0, 240, 255, 0.15);
-                    }
-
-                    .leader-bg-glow {
-                        position: absolute;
-                        inset: -30% -30% auto auto;
-                        width: 160%;
-                        height: 160%;
-                        z-index: 0;
-                        filter: blur(120px);
-                        opacity: .35;
-                        transition: opacity 1s ease, transform 1s ease;
-                    }
-
-                    .leader-card:hover .leader-bg-glow {
-                        opacity: .6;
-                        transform: scale(1.05);
-                    }
-
-                    .leader-bg-glow.gold {
-                        background: radial-gradient(circle,
-                                rgba(125, 252, 255, 0.45),
-                                /* Cyan Glow */
-                                rgba(147, 112, 255, 0.22),
-                                /* Soft Violet Aura */
-                                transparent 70%);
-                    }
-
-                    .leader-bg-glow.silver {
-                        background: radial-gradient(circle, rgba(191, 239, 255, 0.55), rgba(0, 240, 255, 0.18), transparent 65%);
-                    }
-
-                    .leader-icon {
-                        font-size: 4rem;
-                        margin-bottom: 20px;
-                    }
-
-                    .aynur .leader-icon {
-                        color: #7dfcff;
-                        text-shadow: 0 0 35px rgba(125, 252, 255, 0.7), 0 0 80px rgba(147, 112, 255, 0.4);
-                    }
-
-                    .jihan .leader-icon {
-                        color: #00f0ff;
-                    }
-
-                    .leader-name {
-                        font-family: 'Orbitron', sans-serif;
-                        font-size: 2.4rem;
-                        margin-bottom: 10px;
-                    }
-
-                    .aynur .leader-name {
-                        color: #7dfcff;
-                        text-shadow: 0 0 35px rgba(125, 252, 255, 0.7), 0 0 80px rgba(147, 112, 255, 0.4);
-                    }
-
-                    .jihan .leader-name {
-                        color: #aef0ff;
-                    }
-
-                    .leader-role {
-                        font-family: 'Exo 2', sans-serif;
-                        color: #7b42f5;
-                        margin-bottom: 20px;
-                        font-weight: 600;
-                    }
-
-                    .leader-desc {
-                        color: #cdefff;
-                        font-size: 1.1rem;
-                        line-height: 1.7;
-                        margin-bottom: 25px;
-                    }
-
-                    .leader-skills {
-                        list-style: none;
-                        padding: 0;
+                    .leader-card { 
+                        width: 100%;
+                        position: relative; 
+                        background: rgba(10, 15, 25, 0.6); 
+                        border: 1px solid rgba(0, 240, 255, 0.2); 
+                        border-radius: 12px; 
+                        padding: 40px; 
+                        overflow: hidden; 
+                        transition: all 0.3s ease; 
                         text-align: left;
-                        max-width: 700px;
-                        margin: 0 auto;
-                        color: #baf9ff;
                     }
-
-                    .leader-skills li {
-                        margin-bottom: 10px;
-                        position: relative;
-                        padding-left: 5px;
-                        font-size: 1rem;
+                    .leader-card:hover { 
+                        transform: translateY(-5px); 
+                        border-color: rgba(0, 240, 255, 0.5); 
+                        box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1); 
                     }
-
-                    .leader-skills i {
-                        margin-right: 10px;
+                    .leader-header-centered { 
+                        text-align: center; 
+                        margin-bottom: 25px; 
+                    }
+                    .leader-icon-centered { 
+                        font-size: 2.8rem; 
+                        color: #00f0ff; 
+                        margin-bottom: 15px;
+                        filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
+                    }
+                    .leader-name { 
+                        font-family: 'Orbitron', sans-serif; 
+                        font-size: 1.8rem; 
+                        margin-bottom: 5px; 
                         color: #00f0ff;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
                     }
-
-                    .aynur .leader-skills i {
-                        color: #7dfcff;
+                    .leader-role { 
+                        color: #7b42f5; 
+                        font-weight: 600; 
+                        text-transform: uppercase; 
+                        letter-spacing: 2px; 
+                        font-size: 0.82rem; 
                     }
-
-                    @media (max-width: 900px) {
-                        .leader-skills {
-                            text-align: center;
-                        }
+                    .leader-skills-simple { 
+                        list-style: none; 
+                        padding: 0; 
+                        margin: 0;
                     }
+                    .leader-skills-simple li { 
+                        margin-bottom: 12px; 
+                        color: #baf9ff; 
+                        font-size: 0.85rem; 
+                        line-height: 1.5; 
+                    }
+                    
+                    footer { background: #010108; padding: 100px 0 50px; border-top: 1px solid rgba(0, 240, 255, 0.1); margin-top: 120px; }
+                    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
+                    .footer-column h3 { color: #00f0ff; margin-bottom: 30px; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
+                    .footer-links { list-style: none; padding: 0; }
+                    .footer-links li { margin-bottom: 15px; }
+                    .footer-links a { color: #889; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+                    .footer-links a:hover { color: #00f0ff; padding-left: 8px; }
                 </style>
 
-
-
-
-
-                <!-- Footer -->
                 <footer>
                     <div class="container">
                         <div class="footer-content">
                             <div class="footer-column">
-                                <h3>ORCAAMR</h3>
-                                <p>The next-generation blockchain platform backed by $10 trillion in rare earth assets,
-                                    designed for scalability, security, and interoperability.</p>
-                                <div class="social-links">
-                                    <a href="https://x.com/amrchains" target="_blank" title="Twitter"><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a href="https://t.me/orcaamr" target="_blank" title="Telegram"><i
-                                            class="fab fa-telegram-plane"></i></a>
-                                    <a href="https://github.com/orcaamr19" target="_blank" title="GitHub"><i
-                                            class="fab fa-github"></i></a>
-                                    <a href="https://www.youtube.com/@amrchain" target="_blank" title="YouTube"><i
-                                            class="fab fa-youtube"></i></a>
-                                    <a href="https://vision.orcaamr.com" target="_blank" title="White Paper"><i
-                                            class="fas fa-file-alt"></i></a>
+                                <h3 style="background: linear-gradient(90deg, #00f0ff, #7b42f5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">ORCAAMR</h3>
+                                <p style="line-height: 1.8; color: #b0dfff;">Sovereign Cognitive Matrix. $100 Trillion Digital-Metal Reserve. Powered by the ORCA-ACE Super-G AI General Intelligence.</p>
+                                <div class="social-links" style="margin-top: 30px; display: flex; gap: 20px;">
+                                    <a href="https://x.com/amrchains" target="_blank" style="color:#00f0ff; font-size:1.5rem; transition: 0.3s;"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://t.me/orcaamr" target="_blank" style="color:#00f0ff; font-size:1.5rem; transition: 0.3s;"><i class="fab fa-telegram-plane"></i></a>
+                                    <a href="https://github.com/orcaamr19" target="_blank" style="color:#00f0ff; font-size:1.5rem; transition: 0.3s;"><i class="fab fa-github"></i></a>
                                 </div>
                             </div>
                             <div class="footer-column">
-                                <h3>Technology</h3>
+                                <h3>Sovereign Hub</h3>
                                 <ul class="footer-links">
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Blockchain Technology</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> orvexa Language</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> cvm</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Consensus Mechanism</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Smart Contracts</a></li>
+                                    <li><a href="#" class="nav-link" data-tab="orca-ace">ORCA-ACE (General AI)</a></li>
+                                    <li><a href="#" class="nav-link" data-tab="orca-os">Orca OS</a></li>
+                                    <li><a href="#" class="nav-link" data-tab="tokenomics">Tokenomics & AMR Fuel</a></li>
+                                    <li><a href="#" class="nav-link" data-tab="omniverse">Omniverse Int.</a></li>
                                 </ul>
                             </div>
                             <div class="footer-column">
-                                <h3>Resources</h3>
+                                <h3>Governance</h3>
                                 <ul class="footer-links">
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> White Paper</a></li>
+                                    <li><a href="mailto:support@orcaamr.com">Technical Support</a></li>
+                                    <li><a href="https://vision.orcaamr.com" target="_blank">Vision White Paper</a></li>
+                                    <li><a href="#" class="nav-link" data-tab="security">Quantum Security</a></li>
                                 </ul>
-                            </div>
-                            <div class="footer-column">
-                                <h3>Company</h3>
-                                <ul class="footer-links">
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
-                                </ul>
-                            </div>
-                            <div class="footer-column">
-                                <h3>Contact Us</h3>
-                                <div class="contact-emails">
-                                    <a href="mailto:support@orcaamr.com" class="email-link">
-                                        <i class="fas fa-headset"></i>
-                                        <span>support@orcaamr.com</span>
-                                    </a>
-                                    <a href="mailto:business@orcaamr.com" class="email-link">
-                                        <i class="fas fa-briefcase"></i>
-                                        <span>business@orcaamr.com</span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
-
                         <div class="footer-bottom">
-                            <p>&copy; 2025 orcaamr. All rights reserved. | Blockchain innovation for a decentralized
-                                future.</p>
+                            <p style="font-family: 'Exo 2', sans-serif;">&copy; 2025 ORCAAMR Sovereign Engine. Strategic Cognition for the Digital Civilization.</p>
                         </div>
                     </div>
                 </footer>
 
-                <!-- Back to Top Button -->
-                <div class="back-to-top" id="back-to-top">
+                <button class="back-to-top" id="back-to-top" aria-label="Back to Top">
                     <i class="fas fa-arrow-up"></i>
-                </div>
+                </button>
 
                 <script>
-                        // Enhanced Blockchain Animation
-                        const canvas = document.getElementById('blockchain-canvas');
-                        const ctx = canvas.getContext('2d');
-
-                        // Set canvas dimensions
-                        function resizeCanvas() {
-                            canvas.width = window.innerWidth;
-                            canvas.height = window.innerHeight;
-                        }
-
-                        resizeCanvas();
-                        window.addEventListener('resize', resizeCanvas);
-
-                        // Node class for blockchain visualization
-                        class Node {
-                            constructor() {
-                                this.x = Math.random() * canvas.width;
-                                this.y = Math.random() * canvas.height;
-                                this.vx = (Math.random() - 0.5) * 0.3; // Reduced speed
-                                this.vy = (Math.random() - 0.5) * 0.3; // Reduced speed
-                                this.radius = Math.random() * 4 + 2;
-                                this.color = `rgba(${Math.random() * 100 + 155}, ${Math.random() * 100 + 155}, 255, ${Math.random() * 0.3 + 0.2})`; // Reduced opacity
-                                this.pulse = 0;
-                                this.pulseSpeed = Math.random() * 0.02 + 0.01; // Slower pulse
+                    (function() {
+                        try {
+                            const canvas = document.getElementById('blockchain-canvas');
+                            if (canvas) {
+                                const ctx = canvas.getContext('2d');
+                                function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+                                window.addEventListener('resize', resize); resize();
                             }
 
-                            update() {
-                                this.x += this.vx;
-                                this.y += this.vy;
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const tabs = document.querySelectorAll('.tab');
+                                const contents = document.querySelectorAll('.tab-content');
+                                const navLinks = document.querySelectorAll('.nav-link');
 
-                                // Bounce off walls with some randomness
-                                if (this.x < 0 || this.x > canvas.width) {
-                                    this.vx *= -1;
-                                    this.vx += (Math.random() - 0.5) * 0.1;
-                                }
-                                if (this.y < 0 || this.y > canvas.height) {
-                                    this.vy *= -1;
-                                    this.vy += (Math.random() - 0.5) * 0.1;
-                                }
-
-                                // Keep velocity within bounds
-                                const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-                                if (speed > 1) { // Reduced max speed
-                                    this.vx = (this.vx / speed) * 1;
-                                    this.vy = (this.vy / speed) * 1;
+                                function activateTab(id) {
+                                    tabs.forEach(t => t.classList.remove('active'));
+                                    contents.forEach(c => c.classList.remove('active'));
+                                    navLinks.forEach(l => l.classList.remove('active'));
+                                    
+                                    const t = document.querySelector(`.tab[data-tab="${id}"]`);
+                                    const c = document.querySelector(`#${id}-content`);
+                                    const n = document.querySelectorAll(`.nav-link[data-tab="${id}"]`);
+                                    
+                                    if(t) t.classList.add('active');
+                                    if(c) c.classList.add('active');
+                                    n.forEach(link => link.classList.add('active'));
                                 }
 
-                                // Update pulse
-                                this.pulse += this.pulseSpeed;
-                                if (this.pulse > Math.PI * 2) this.pulse -= Math.PI * 2;
-                            }
-
-                            draw() {
-                                const pulseFactor = Math.sin(this.pulse) * 0.2 + 0.8; // Reduced pulse effect
-                                const currentRadius = this.radius * pulseFactor;
-
-                                // Draw glow
-                                const gradient = ctx.createRadialGradient(
-                                    this.x, this.y, 0,
-                                    this.x, this.y, currentRadius * 2
-                                );
-                                gradient.addColorStop(0, this.color);
-                                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-                                ctx.beginPath();
-                                ctx.arc(this.x, this.y, currentRadius * 2, 0, Math.PI * 2);
-                                ctx.fillStyle = gradient;
-                                ctx.fill();
-
-                                // Draw node
-                                ctx.beginPath();
-                                ctx.arc(this.x, this.y, currentRadius, 0, Math.PI * 2);
-                                ctx.fillStyle = this.color;
-                                ctx.fill();
-
-                                // Draw inner highlight
-                                ctx.beginPath();
-                                ctx.arc(
-                                    this.x - currentRadius * 0.3,
-                                    this.y - currentRadius * 0.3,
-                                    currentRadius * 0.5,
-                                    0,
-                                    Math.PI * 2
-                                );
-                                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'; // Reduced opacity
-                                ctx.fill();
-                            }
-                        }
-
-                        // Create nodes
-                        const nodes = [];
-                        const nodeCount = 80; // Reduced node count
-
-                        for (let i = 0; i < nodeCount; i++) {
-                            nodes.push(new Node());
-                        }
-
-                        // Draw connections between nearby nodes
-                        function drawConnections() {
-                            for (let i = 0; i < nodes.length; i++) {
-                                for (let j = i + 1; j < nodes.length; j++) {
-                                    const dx = nodes[i].x - nodes[j].x;
-                                    const dy = nodes[i].y - nodes[j].y;
-                                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                                    if (distance < 150) { // Reduced connection distance
-                                        const opacity = 0.2 * (1 - distance / 150); // Reduced opacity
-
-                                        ctx.beginPath();
-                                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                                        ctx.strokeStyle = `rgba(100, 150, 255, ${opacity})`;
-                                        ctx.lineWidth = 0.5; // Reduced line width
-                                        ctx.stroke();
-
-                                        // Add data flow animation occasionally
-                                        if (Math.random() < 0.001) { // Reduced frequency
-                                            animateDataFlow(nodes[i], nodes[j]);
+                                tabs.forEach(t => t.addEventListener('click', () => {
+                                    activateTab(t.dataset.tab);
+                                    window.scrollTo({top: 0, behavior: 'smooth'});
+                                }));
+                                
+                                document.querySelectorAll('.nav-link').forEach(l => {
+                                    l.addEventListener('click', (e) => {
+                                        const tid = l.dataset.tab;
+                                        if (tid === 'security' || tid === 'team') {
+                                            const sid = tid === 'team' ? 'leadership-team' : 'security';
+                                            const el = document.getElementById(sid);
+                                            if (el) { 
+                                                e.preventDefault(); 
+                                                el.scrollIntoView({behavior:'smooth'}); 
+                                                // Update active state
+                                                navLinks.forEach(link => link.classList.remove('active'));
+                                                l.classList.add('active');
+                                            }
+                                        } else if (tid) {
+                                            e.preventDefault();
+                                            activateTab(tid);
+                                            document.querySelector('.main-content')?.scrollIntoView({behavior:'smooth'});
                                         }
-                                    }
-                                }
-                            }
-                        }
-
-                        // Data flow animation between nodes
-                        function animateDataFlow(node1, node2) {
-                            const dataParticles = [];
-                            const particleCount = 3; // Reduced particle count
-
-                            for (let i = 0; i < particleCount; i++) {
-                                dataParticles.push({
-                                    x: node1.x,
-                                    y: node1.y,
-                                    progress: Math.random() * 0.2,
-                                    speed: Math.random() * 0.01 + 0.005, // Slower speed
-                                    size: Math.random() * 1.5 + 0.5 // Smaller particles
-                                });
-                            }
-
-                            function updateDataParticles() {
-                                let allFinished = true;
-
-                                for (const particle of dataParticles) {
-                                    particle.progress += particle.speed;
-
-                                    if (particle.progress < 1) {
-                                        allFinished = false;
-                                        particle.x = node1.x + (node2.x - node1.x) * particle.progress;
-                                        particle.y = node1.y + (node2.y - node1.y) * particle.progress;
-
-                                        // Draw particle
-                                        ctx.beginPath();
-                                        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                                        ctx.fillStyle = `rgba(0, 240, 255, ${1 - particle.progress * 0.5})`;
-                                        ctx.fill();
-                                    }
-                                }
-
-                                if (!allFinished) {
-                                    requestAnimationFrame(updateDataParticles);
-                                }
-                            }
-
-                            updateDataParticles();
-                        }
-
-                        // Animation loop
-                        function animate() {
-                            ctx.fillStyle = 'rgba(5, 5, 16, 0.08)'; // Reduced opacity for slower fade
-                            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                            // Update and draw nodes
-                            nodes.forEach(node => {
-                                node.update();
-                                node.draw();
-                            });
-
-                            // Draw connections
-                            drawConnections();
-
-                            requestAnimationFrame(animate);
-                        }
-
-                        animate();
-
-                        // Tab functionality
-                        document.addEventListener('DOMContentLoaded', function () {
-                            const tabs = document.querySelectorAll('.tab');
-                            const navLinks = document.querySelectorAll('.nav-link');
-                            const tabContents = document.querySelectorAll('.tab-content');
-
-                            function activateTab(tabId) {
-                                // Deactivate all tabs
-                                tabs.forEach(tab => tab.classList.remove('active'));
-                                tabContents.forEach(content => content.classList.remove('active'));
-                                navLinks.forEach(link => link.classList.remove('active'));
-
-                                // Activate selected tab
-                                const selectedTab = document.querySelector(`.tab[data-tab="${tabId}"]`);
-                                const selectedContent = document.querySelector(`#${tabId}-content`);
-                                const selectedNavLink = document.querySelector(`.nav-link[data-tab="${tabId}"]`);
-
-                                if (selectedTab) selectedTab.classList.add('active');
-                                if (selectedContent) selectedContent.classList.add('active');
-                                if (selectedNavLink) selectedNavLink.classList.add('active');
-
-                                // Close mobile menu if open
-                                document.getElementById('main-nav').classList.remove('active');
-                            }
-
-                            tabs.forEach(tab => {
-                                tab.addEventListener('click', () => {
-                                    const tabId = tab.getAttribute('data-tab');
-                                    activateTab(tabId);
-                                });
-                            });
-
-                            navLinks.forEach(link => {
-                                link.addEventListener('click', (e) => {
-                                    e.preventDefault();
-                                    const tabId = link.getAttribute('data-tab');
-
-                                    // Special handling for Team - scroll to leadership section
-                                    if (tabId === 'team') {
-                                        const teamSection = document.getElementById('leadership-team');
-                                        if (teamSection) {
-                                            teamSection.scrollIntoView({
-                                                behavior: 'smooth'
-                                            });
-                                        }
-                                        // Close mobile menu if open
-                                        document.getElementById('main-nav').classList.remove('active');
-                                        return;
-                                    }
-
-                                    activateTab(tabId);
-
-                                    // Scroll to main content
-                                    document.querySelector('.main-content').scrollIntoView({
-                                        behavior: 'smooth'
                                     });
                                 });
-                            });
 
-                            // Mobile menu toggle
-                            document.getElementById('mobile-menu-toggle').addEventListener('click', function () {
-                                document.getElementById('main-nav').classList.toggle('active');
-                            });
-
-                            // FAQ functionality
-                            const faqItems = document.querySelectorAll('.faq-item');
-                            faqItems.forEach(item => {
-                                const question = item.querySelector('.faq-question');
-                                question.addEventListener('click', () => {
-                                    item.classList.toggle('active');
+                                // Back to top
+                                const btt = document.getElementById('back-to-top');
+                                window.addEventListener('scroll', () => {
+                                    if (window.scrollY > 600) btt.classList.add('active');
+                                    else btt.classList.remove('active');
                                 });
-                            });
+                                btt.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
-                            // Back to top button
-                            const backToTopButton = document.getElementById('back-to-top');
-
-                            window.addEventListener('scroll', () => {
-                                if (window.pageYOffset > 300) {
-                                    backToTopButton.classList.add('active');
-                                    document.getElementById('header').classList.add('scrolled');
-                                } else {
-                                    backToTopButton.classList.remove('active');
-                                    document.getElementById('header').classList.remove('scrolled');
+                                // Google Translate
+                                window.googleTranslateElementInit = function() {
+                                    new google.translate.TranslateElement({
+                                        pageLanguage: 'en', 
+                                        includedLanguages: 'ar,en,fr,de,es,ru,zh-CN,ja,tr,ko,it,pt,hi,bn,vi,th,id,ms,tl,he,el,nl,pl,sv,no,fi,da,cs,hu,ro',
+                                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                                    }, 'google_translate_element');
                                 }
+                                const script = document.createElement('script');
+                                script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                                document.body.appendChild(script);
+
+                                activateTab('home');
                             });
-
-                            backToTopButton.addEventListener('click', () => {
-                                window.scrollTo({
-                                    top: 0,
-                                    behavior: 'smooth'
-                                });
-                            });
-
-                            // Contact form submission
-                            const contactForm = document.getElementById('contactForm');
-                            if (contactForm) {
-                                contactForm.addEventListener('submit', function (e) {
-                                    e.preventDefault();
-                                    // In a real implementation, you would send the form data to a server
-                                    alert('Thank you for your message! We will get back to you soon.');
-                                    contactForm.reset();
-                                });
-                            }
-
-                            // Initialize with home tab active
-                            activateTab('home');
-                        });
-
-
-                    // Tokenomics Chart Setup (Simplified Distribution)
-
-
+                        } catch(err) { console.error("ORCA Engine Error:", err); }
+                    })();
                 </script>
-</body>
-
-</html>
+            </body>
+            </html>
